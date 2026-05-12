@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DemoHeader from '../../components/DemoHeader.astro';
+import DemoFooter from '../../components/DemoFooter.astro';
+import DemoCTA from '../../components/DemoCTA.astro';
+---
+
+<BaseLayout title="Business & Seriös – STH Design-Katalog">
+<div style="display:flex; flex-direction:column; min-height:100vh; font-family:Georgia,'Times New Roman',serif;">
+  <DemoHeader showBack currentStyle="Business & Seriös" />
+
+  <div style="flex:1; background:#f0f4f8;">
+
+    <!-- Nav -->
+    <nav style="background:#1e3a5f; position:sticky; top:42px; z-index:40;">
+      <div style="max-width:72rem; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:68px;">
+        <div>
+          <span style="font-size:1.125rem; font-weight:700; color:white; letter-spacing:0.02em; font-family:Georgia,serif;">Hartmann</span>
+          <span style="font-size:0.6875rem; color:rgba(255,255,255,0.4); letter-spacing:0.14em; text-transform:uppercase; margin-left:0.5rem; font-family:system-ui,sans-serif;">Rechtsanwälte</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:2rem;" class="hidden md:flex">
+          {['Kanzlei','Leistungen','Team','Kontakt'].map(l => (
+            <a href="#" style="font-size:0.8125rem; color:rgba(255,255,255,0.6); text-decoration:none; letter-spacing:0.06em; font-family:system-ui,sans-serif; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">{l}</a>
+          ))}
+          <a href="#" style="background:#c9a23d; color:#1e3a5f; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.625rem 1.25rem; font-family:system-ui,sans-serif; text-decoration:none; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Erstberatung</a>
+        </div>
+        <button style="color:rgba(255,255,255,0.6); background:none; border:none; cursor:pointer;" class="md:hidden" aria-label="Menü">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero: Fullscreen dark -->
+    <section style="background:linear-gradient(160deg,#1e3a5f 0%,#152c47 60%,#0e1f35 100%); min-height:85vh; display:flex; align-items:center; padding:5rem 1.5rem; position:relative; overflow:hidden;">
+      <div style="position:absolute; inset:0; background:url(#); opacity:0.04;" aria-hidden="true"></div>
+      <div style="position:absolute; right:-5rem; top:50%; transform:translateY(-50%); width:500px; height:500px; border:1px solid rgba(201,162,61,0.15); border-radius:50%;" aria-hidden="true"></div>
+      <div style="position:absolute; right:-2rem; top:50%; transform:translateY(-50%); width:320px; height:320px; border:1px solid rgba(201,162,61,0.08); border-radius:50%;" aria-hidden="true"></div>
+      <div style="max-width:72rem; margin:0 auto; width:100%; position:relative;">
+        <div style="max-width:56ch;">
+          <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:2rem;">
+            <div style="width:2.5rem; height:1px; background:#c9a23d;"></div>
+            <span style="font-size:0.6875rem; color:#c9a23d; letter-spacing:0.2em; text-transform:uppercase; font-family:system-ui,sans-serif;">Seit 1987 in Duisburg</span>
+          </div>
+          <h1 style="font-size:clamp(2rem,5vw,3.5rem); font-weight:400; color:white; line-height:1.2; margin:0 0 1.5rem; letter-spacing:-0.01em;">
+            Verlässlicher Rechtsbeistand.<br /><em style="color:#c9a23d;">Wenn es zählt.</em>
+          </h1>
+          <p style="color:rgba(255,255,255,0.6); font-size:1.0625rem; line-height:1.75; max-width:46ch; margin:0 0 2.5rem; font-family:system-ui,sans-serif;">
+            Kanzlei Hartmann steht für fundierte Rechtsberatung, klare Kommunikation und jahrzehntelange Erfahrung – in Arbeitsrecht, Gesellschaftsrecht und Vertragsrecht.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+            <a href="#" style="background:#c9a23d; color:#1e3a5f; font-size:0.8125rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:1rem 2rem; font-family:system-ui,sans-serif; text-decoration:none;">Erstberatung anfragen</a>
+            <a href="#" style="border:1px solid rgba(255,255,255,0.25); color:rgba(255,255,255,0.8); font-size:0.8125rem; letter-spacing:0.08em; text-transform:uppercase; padding:1rem 2rem; font-family:system-ui,sans-serif; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.6)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.25)'">Kanzlei kennenlernen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section style="background:white; padding:5rem 1.5rem;">
+      <div style="max-width:72rem; margin:0 auto;">
+        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem;">
+          <div style="width:2rem; height:1px; background:#c9a23d;"></div>
+          <span style="font-size:0.6875rem; color:#c9a23d; letter-spacing:0.2em; text-transform:uppercase; font-family:system-ui,sans-serif;">Schwerpunkte</span>
+        </div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2.25rem); font-weight:400; color:#1e3a5f; margin:0 0 3rem; max-width:30ch;">Unsere Beratungsfelder.</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1px; background:#e2e8f0;">
+          {[
+            { title:'Arbeitsrecht', text:'Kündigung, Abmahnung, Aufhebungsverträge – wir vertreten Arbeitgeber und Arbeitnehmer.' },
+            { title:'Gesellschaftsrecht', text:'Gründung, Umstrukturierung und Vertragsgestaltung für Unternehmen aller Größen.' },
+            { title:'Vertragsrecht', text:'Prüfung, Gestaltung und Durchsetzung von Verträgen mit klarer rechtlicher Grundlage.' },
+          ].map(s => (
+            <div style="background:white; padding:2.25rem;">
+              <h3 style="font-size:1.0625rem; font-weight:400; color:#1e3a5f; margin:0 0 1rem; letter-spacing:0.01em;">{s.title}</h3>
+              <div style="width:1.5rem; height:1px; background:#c9a23d; margin-bottom:1rem;"></div>
+              <p style="font-size:0.9375rem; color:#64748b; line-height:1.7; margin:0; font-family:system-ui,sans-serif;">{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <DemoCTA headline="Rechtssicher beraten. Konsequent vertreten." body="Vereinbaren Sie ein unverbindliches Erstgespräch und schildern Sie Ihr Anliegen." buttonText="Termin vereinbaren" bg="#1e3a5f" color="white" buttonBg="#c9a23d" buttonColor="#1e3a5f" />
+
+    <div style="background:#f0f4f8; padding:1.25rem 1.5rem; border-top:1px solid #dde4ed;">
+      <div style="max-width:72rem; margin:0 auto;">
+        <p style="font-size:0.8125rem; color:#64748b; margin:0; font-family:system-ui,sans-serif;"><strong style="color:#1e3a5f;">Geeignet für:</strong> Rechtsanwaltskanzleien, Unternehmensberatungen, Steuerberater, Notare, Finanzdienstleister.</p>
+      </div>
+    </div>
+  </div>
+
+  <DemoFooter />
+</div>
+</BaseLayout>

@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand:   #0f2d4a;
+  --color-accent:  #1a7fa0;
+  --color-surface: #f8fafc;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes shimmerBg {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139,92,246,0); }
+  50%       { box-shadow: 0 0 24px 6px rgba(139,92,246,0.45); }
+}
+
+.anim-up    { animation: fadeInUp  0.6s ease-out both; }
+.anim-in    { animation: fadeIn    0.7s ease-out both; }
+.anim-left  { animation: slideLeft 0.6s ease-out both; }
+.anim-float { animation: float 3.5s ease-in-out infinite; }
+.anim-shimmer { background-size: 250% 250%; animation: shimmerBg 5s ease infinite; }
+.anim-glow  { animation: pulseGlow 2.2s ease-in-out infinite; }
+
+.d1 { animation-delay: 0.1s; }
+.d2 { animation-delay: 0.2s; }
+.d3 { animation-delay: 0.35s; }
+.d4 { animation-delay: 0.5s; }
+.d5 { animation-delay: 0.65s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-up, .anim-in, .anim-left,
+  .anim-float, .anim-shimmer, .anim-glow { animation: none; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; }

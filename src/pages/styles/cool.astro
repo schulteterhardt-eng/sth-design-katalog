@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DemoHeader from '../../components/DemoHeader.astro';
+import DemoFooter from '../../components/DemoFooter.astro';
+import DemoCTA from '../../components/DemoCTA.astro';
+---
+
+<BaseLayout title="Cool & Dynamisch – STH Design-Katalog">
+<div style="display:flex; flex-direction:column; min-height:100vh; font-family:system-ui,-apple-system,sans-serif;">
+  <DemoHeader showBack currentStyle="Cool & Dynamisch" />
+
+  <div style="flex:1; background:#09090b;">
+
+    <!-- Nav -->
+    <nav style="background:rgba(9,9,11,0.9); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.06); position:sticky; top:42px; z-index:40;">
+      <div style="max-width:72rem; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:64px;">
+        <span style="font-size:1rem; font-weight:900; color:white; letter-spacing:0.06em; text-transform:uppercase;">VOLT<span style="color:#7c3aed;">_</span></span>
+        <div style="display:flex; align-items:center; gap:2rem;" class="hidden md:flex">
+          {['Studio','Work','Services','Contact'].map(l => (
+            <a href="#" style="font-size:0.75rem; font-weight:600; color:rgba(255,255,255,0.45); text-decoration:none; letter-spacing:0.12em; text-transform:uppercase; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">{l}</a>
+          ))}
+          <a href="#" style="border:1px solid rgba(124,58,237,0.6); color:#a78bfa; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.125rem; text-decoration:none; transition:background 0.2s,border-color 0.2s;" onmouseover="this.style.background='rgba(124,58,237,0.15)'" onmouseout="this.style.background='transparent'">Get in Touch</a>
+        </div>
+        <button style="background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.5);" class="md:hidden" aria-label="Menü">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero: Full dark mit Gradient-Mesh -->
+    <section style="min-height:90vh; display:flex; align-items:center; padding:5rem 1.5rem; position:relative; overflow:hidden;">
+      <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 20% 50%,rgba(124,58,237,0.25) 0%,transparent 55%),radial-gradient(ellipse at 80% 50%,rgba(6,182,212,0.15) 0%,transparent 55%); pointer-events:none;" aria-hidden="true"></div>
+      <div style="position:absolute; top:10%; right:5%; width:400px; height:400px; border:1px solid rgba(124,58,237,0.15); border-radius:50%;" aria-hidden="true"></div>
+      <div style="max-width:72rem; margin:0 auto; width:100%; position:relative;">
+        <div style="max-width:60ch;">
+          <p style="font-size:0.75rem; font-weight:700; color:#7c3aed; letter-spacing:0.2em; text-transform:uppercase; margin:0 0 1.5rem;">Creative Studio · Berlin</p>
+          <h1 style="font-size:clamp(2.5rem,7vw,5.5rem); font-weight:900; color:white; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase; margin:0 0 2rem;">
+            We Build<br /><span style="background:linear-gradient(90deg,#7c3aed,#22d3ee); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Bold</span><br />Digital.
+          </h1>
+          <p style="color:rgba(255,255,255,0.5); font-size:1.0625rem; line-height:1.7; max-width:44ch; margin:0 0 2.5rem;">
+            Brand identity, motion design und digitale Produkte für Unternehmen, die auffallen wollen.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+            <a href="#" style="background:linear-gradient(135deg,#7c3aed,#4f46e5); color:white; font-size:0.875rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:1rem 2rem; text-decoration:none; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Start a Project</a>
+            <a href="#" style="color:rgba(255,255,255,0.6); font-size:0.875rem; font-weight:600; padding:1rem 1.5rem; text-decoration:none; display:flex; align-items:center; gap:0.5rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
+              Our Work
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services: Dark Cards -->
+    <section style="padding:5rem 1.5rem; border-top:1px solid rgba(255,255,255,0.06);">
+      <div style="max-width:72rem; margin:0 auto;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:3rem; flex-wrap:wrap; gap:1rem;">
+          <h2 style="font-size:clamp(1.5rem,3vw,2.25rem); font-weight:900; color:white; text-transform:uppercase; letter-spacing:-0.02em; margin:0;">Services</h2>
+          <a href="#" style="font-size:0.75rem; font-weight:700; color:rgba(255,255,255,0.4); letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">View All →</a>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1px; background:rgba(255,255,255,0.06);">
+          {[
+            { nr:'01', color:'#7c3aed', title:'Brand Identity', text:'Logo, Farben, Typografie – eine kohärente Markenidentität, die in Erinnerung bleibt.' },
+            { nr:'02', color:'#22d3ee', title:'Web Design', text:'Websites mit Persönlichkeit: schnell, responsiv und visuell einprägsam.' },
+            { nr:'03', color:'#f43f5e', title:'Motion & Video', text:'Animationen und Videoproduktion, die Bewegung mit Message verbinden.' },
+          ].map(s => (
+            <div style="background:#111113; padding:2.5rem 2rem; transition:background 0.2s;" onmouseover="this.style.background='#161618'" onmouseout="this.style.background='#111113'">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:2rem;">
+                <span style={`font-size:0.75rem; font-weight:700; color:${s.color}; letter-spacing:0.14em;`}>{s.nr}</span>
+                <div style={`width:2rem; height:1px; background:${s.color};`}></div>
+              </div>
+              <h3 style="font-size:1.125rem; font-weight:800; color:white; margin:0 0 0.75rem; text-transform:uppercase; letter-spacing:0.02em;">{s.title}</h3>
+              <p style="color:rgba(255,255,255,0.45); font-size:0.9375rem; line-height:1.65; margin:0;">{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <DemoCTA headline="LET'S BUILD SOMETHING BOLD." body="Kein Briefing zu groß, kein Projekt zu riskant. Wir lieben Herausforderungen." buttonText="Start a project" bg="linear-gradient(135deg,#4f46e5,#7c3aed)" color="white" buttonBg="white" buttonColor="#4f46e5" />
+
+    <div style="background:#09090b; padding:1.25rem 1.5rem; border-top:1px solid rgba(255,255,255,0.06);">
+      <div style="max-width:72rem; margin:0 auto;">
+        <p style="font-size:0.8125rem; color:rgba(255,255,255,0.35); margin:0;"><strong style="color:rgba(255,255,255,0.6);">Geeignet für:</strong> Kreativagenturen, Fitnessstudios, Clubs, E-Sports, Musikproduzenten, Tech-Startups.</p>
+      </div>
+    </div>
+  </div>
+
+  <DemoFooter />
+</div>
+</BaseLayout>

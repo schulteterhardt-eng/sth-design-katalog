@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DemoHeader from '../../components/DemoHeader.astro';
+import DemoFooter from '../../components/DemoFooter.astro';
+import DemoCTA from '../../components/DemoCTA.astro';
+---
+
+<BaseLayout title="Kindlich & Verspielt – STH Design-Katalog">
+<div style="display:flex; flex-direction:column; min-height:100vh; font-family:system-ui,-apple-system,sans-serif;">
+  <DemoHeader showBack currentStyle="Kindlich & Verspielt" />
+
+  <div style="flex:1; background:#fffbeb;">
+
+    <!-- Nav: Bunt & Rund -->
+    <nav style="background:white; border-bottom:3px solid #fde68a; position:sticky; top:42px; z-index:40;">
+      <div style="max-width:68rem; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:68px;">
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <div style="width:32px; height:32px; background:linear-gradient(135deg,#f97316,#ec4899); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+            <span style="font-size:1rem;">⭐</span>
+          </div>
+          <span style="font-size:1.125rem; font-weight:900; color:#1c1917;">Zauber<span style="color:#f97316;">land</span></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.75rem;" class="hidden md:flex">
+          {[['Angebote','#22c55e'],['Über uns','#3b82f6'],['Termine','#a855f7'],['Kontakt','#f97316']].map(([l,c]) => (
+            <a href="#" style={`font-size:0.8125rem; font-weight:700; color:white; background:${c}; padding:0.375rem 1rem; border-radius:999px; text-decoration:none; transition:opacity 0.2s;`} onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">{l}</a>
+          ))}
+        </div>
+        <button style="background:none; border:none; cursor:pointer; color:#f97316;" class="md:hidden" aria-label="Menü">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero: Bunte Formen -->
+    <section style="padding:4rem 1.5rem 5rem; position:relative; overflow:hidden;">
+      <!-- Dekorative Kreise -->
+      <div style="position:absolute; top:-60px; right:-60px; width:280px; height:280px; background:#fde68a; border-radius:50%; opacity:0.6;" aria-hidden="true"></div>
+      <div style="position:absolute; bottom:-40px; left:-40px; width:200px; height:200px; background:#bbf7d0; border-radius:50%; opacity:0.6;" aria-hidden="true"></div>
+
+      <div style="max-width:68rem; margin:0 auto; position:relative; display:grid; grid-template-columns:1fr; gap:3rem; align-items:center;" class="lg:grid-cols-2">
+        <div>
+          <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#fef9c3; border:2px solid #fde68a; border-radius:999px; padding:0.375rem 1rem; margin-bottom:1.5rem;">
+            <span>🌟</span>
+            <span style="font-size:0.8125rem; font-weight:700; color:#92400e;">Kita & Hort · Duisburg</span>
+          </div>
+          <h1 style="font-size:clamp(2rem,5vw,3.5rem); font-weight:900; color:#1c1917; line-height:1.15; margin:0 0 1.25rem;">
+            Wo Kinder<br />
+            <span style="color:#f97316;">strahlen</span> &amp;<br />
+            wachsen! 🌱
+          </h1>
+          <p style="color:#57534e; font-size:1.0625rem; line-height:1.75; max-width:44ch; margin:0 0 2rem;">
+            Liebevolle Betreuung, kreatives Spielen und ein Ort, an dem sich jedes Kind willkommen und sicher fühlt.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+            <a href="#" style="background:#f97316; color:white; font-size:0.9375rem; font-weight:800; padding:0.875rem 1.75rem; border-radius:999px; text-decoration:none; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Anmelden ✨</a>
+            <a href="#" style="background:#22c55e; color:white; font-size:0.9375rem; font-weight:800; padding:0.875rem 1.75rem; border-radius:999px; text-decoration:none; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Besuch anfragen</a>
+          </div>
+        </div>
+        <!-- Buntes Raster -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;" aria-hidden="true">
+          {[
+            { bg:'#fef08a', icon:'🎨', label:'Basteln' },
+            { bg:'#bbf7d0', icon:'🎵', label:'Musik' },
+            { bg:'#bfdbfe', icon:'📚', label:'Lesen' },
+            { bg:'#fce7f3', icon:'🏃', label:'Bewegen' },
+          ].map(c => (
+            <div style={`background:${c.bg}; border-radius:16px; padding:1.5rem; text-align:center;`}>
+              <span style="font-size:2rem; display:block; margin-bottom:0.5rem;">{c.icon}</span>
+              <span style="font-size:0.875rem; font-weight:700; color:#1c1917;">{c.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Angebote: Bunte Karten -->
+    <section style="background:white; padding:4rem 1.5rem;">
+      <div style="max-width:68rem; margin:0 auto;">
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem); font-weight:900; color:#1c1917; text-align:center; margin:0 0 2.5rem;">Unsere Angebote 🎉</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1.25rem;">
+          {[
+            { bg:'#fef9c3', border:'#fde68a', icon:'🌞', title:'Krippe (0–3 Jahre)', text:'Liebevolle Kleingruppen mit viel Zeit für jedes Kind.' },
+            { bg:'#f0fdf4', border:'#bbf7d0', icon:'🌿', title:'Kita (3–6 Jahre)', text:'Spielen, entdecken und erste Freundschaften schließen.' },
+            { bg:'#eff6ff', border:'#bfdbfe', icon:'🚀', title:'Hort (6–12 Jahre)', text:'Hausaufgaben, Freizeit und spannende Projekte.' },
+          ].map(a => (
+            <div style={`background:${a.bg}; border:2px solid ${a.border}; border-radius:16px; padding:2rem; text-align:center;`}>
+              <span style="font-size:2.5rem; display:block; margin-bottom:1rem;">{a.icon}</span>
+              <h3 style="font-size:1rem; font-weight:800; color:#1c1917; margin:0 0 0.5rem;">{a.title}</h3>
+              <p style="font-size:0.875rem; color:#57534e; line-height:1.6; margin:0;">{a.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <DemoCTA headline="Neugierig? Kommen Sie uns besuchen! 🏡" body="Vereinbaren Sie einen Schnuppertag – wir freuen uns auf Sie und Ihr Kind." buttonText="Besuchstermin anfragen" bg="#f97316" color="white" buttonBg="white" buttonColor="#f97316" />
+
+    <div style="background:#fffbeb; padding:1.25rem 1.5rem; border-top:3px solid #fde68a;">
+      <div style="max-width:68rem; margin:0 auto;">
+        <p style="font-size:0.8125rem; color:#78716c; margin:0;"><strong style="color:#1c1917;">Geeignet für:</strong> Kitas, Krippen, Kindertheatre, Spielzeughändler, Musikschulen für Kinder, Freizeitangebote.</p>
+      </div>
+    </div>
+  </div>
+
+  <DemoFooter />
+</div>
+</BaseLayout>

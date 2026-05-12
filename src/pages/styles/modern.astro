@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DemoHeader from '../../components/DemoHeader.astro';
+import DemoFooter from '../../components/DemoFooter.astro';
+---
+
+<BaseLayout title="Modern & Klar – STH Design-Katalog">
+<div style="display:flex; flex-direction:column; min-height:100vh; font-family:system-ui,-apple-system,sans-serif; background:#ffffff;">
+
+  <DemoHeader showBack currentStyle="Modern & Klar" />
+
+  <!-- Demo-Navigation -->
+  <nav style="background:white; border-bottom:1px solid #f3f4f6; position:sticky; top:42px; z-index:40;">
+    <div style="max-width:64rem; margin:0 auto; padding:0 1.5rem; height:60px; display:flex; align-items:center; justify-content:space-between;">
+      <span style="font-size:1rem; font-weight:700; color:#111827; letter-spacing:-0.01em;">Bergmann <span style="font-weight:300; color:#9ca3af;">&amp; Partner</span></span>
+      <div style="display:flex; align-items:center; gap:2rem;" class="hidden md:flex">
+        {['Leistungen', 'Über uns', 'Referenzen', 'Kontakt'].map(l => (
+          <a href="#" style="font-size:0.875rem; color:#6b7280; text-decoration:none; transition:color 0.15s;" onmouseover="this.style.color='#111827'" onmouseout="this.style.color='#6b7280'">{l}</a>
+        ))}
+      </div>
+      <button style="background:none; border:none; cursor:pointer; color:#9ca3af; padding:0.25rem;" class="md:hidden" aria-label="Menü">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main style="flex:1;">
+
+    <!-- Hero -->
+    <section style="padding:6rem 1.5rem 7rem; background:white;">
+      <div style="max-width:64rem; margin:0 auto;">
+
+        <p style="font-size:0.8125rem; font-weight:500; color:#6b7280; letter-spacing:0.08em; text-transform:uppercase; margin:0 0 2rem;">Steuerberatung · Duisburg</p>
+
+        <h1 style="font-size:clamp(2.25rem,5vw,3.75rem); font-weight:700; color:#111827; line-height:1.15; letter-spacing:-0.025em; margin:0 0 1.75rem; max-width:18ch;">
+          Zahlen im Griff.<br />Zukunft im Blick.
+        </h1>
+
+        <p style="font-size:1.125rem; color:#6b7280; line-height:1.75; max-width:48ch; margin:0 0 2.75rem;">
+          Wir beraten Selbstständige, Freiberufler und kleine Unternehmen – verlässlich, verständlich und persönlich.
+        </p>
+
+        <div style="display:flex; flex-wrap:wrap; gap:0.875rem; align-items:center;">
+          <a href="#" style="background:#111827; color:white; font-size:0.9375rem; font-weight:600; padding:0.875rem 1.875rem; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='#374151'" onmouseout="this.style.background='#111827'">
+            Erstgespräch vereinbaren
+          </a>
+          <a href="#" style="color:#374151; font-size:0.9375rem; font-weight:500; text-decoration:none; display:flex; align-items:center; gap:0.375rem; transition:color 0.15s;" onmouseover="this.style.color='#111827'" onmouseout="this.style.color='#374151'">
+            Leistungen ansehen
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Trennlinie -->
+    <div style="max-width:64rem; margin:0 auto 0; padding:0 1.5rem;">
+      <div style="height:1px; background:#f3f4f6;"></div>
+    </div>
+
+    <!-- Drei Vorteile -->
+    <section style="padding:5rem 1.5rem; background:#fafafa;">
+      <div style="max-width:64rem; margin:0 auto;">
+
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem); font-weight:700; color:#111827; letter-spacing:-0.02em; margin:0 0 0.75rem;">Warum Bergmann &amp; Partner?</h2>
+        <p style="font-size:1rem; color:#9ca3af; margin:0 0 3.5rem; max-width:44ch; line-height:1.6;">Drei Dinge, die uns von der Masse unterscheiden.</p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem;">
+
+          <div style="background:white; padding:2rem; border:1px solid #f3f4f6;">
+            <div style="width:40px; height:40px; background:#f9fafb; border:1px solid #e5e7eb; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#374151" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            </div>
+            <h3 style="font-size:1rem; font-weight:600; color:#111827; margin:0 0 0.625rem;">Persönliche Betreuung</h3>
+            <p style="font-size:0.9375rem; color:#6b7280; line-height:1.65; margin:0;">Sie haben einen festen Ansprechpartner – kein Callcenter, kein Weiterleiten.</p>
+          </div>
+
+          <div style="background:white; padding:2rem; border:1px solid #f3f4f6;">
+            <div style="width:40px; height:40px; background:#f9fafb; border:1px solid #e5e7eb; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#374151" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <h3 style="font-size:1rem; font-weight:600; color:#111827; margin:0 0 0.625rem;">Klare Sprache</h3>
+            <p style="font-size:0.9375rem; color:#6b7280; line-height:1.65; margin:0;">Keine Fachbegriffe ohne Erklärung. Wir reden mit Ihnen, nicht über Sie hinweg.</p>
+          </div>
+
+          <div style="background:white; padding:2rem; border:1px solid #f3f4f6;">
+            <div style="width:40px; height:40px; background:#f9fafb; border:1px solid #e5e7eb; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#374151" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 style="font-size:1rem; font-weight:600; color:#111827; margin:0 0 0.625rem;">Zuverlässige Fristen</h3>
+            <p style="font-size:0.9375rem; color:#6b7280; line-height:1.65; margin:0;">Abgabefristen werden eingehalten. Immer. Pünktlichkeit ist bei uns kein Extra.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding:5rem 1.5rem; background:white; border-top:1px solid #f3f4f6;">
+      <div style="max-width:64rem; margin:0 auto; display:flex; flex-direction:column; gap:2rem;" class="sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 style="font-size:clamp(1.375rem,2.5vw,1.75rem); font-weight:700; color:#111827; margin:0 0 0.5rem; letter-spacing:-0.015em;">Bereit für den ersten Schritt?</h2>
+          <p style="font-size:1rem; color:#9ca3af; margin:0;">Das Erstgespräch ist kostenlos und unverbindlich.</p>
+        </div>
+        <a href="#" style="background:#111827; color:white; font-size:0.9375rem; font-weight:600; padding:0.875rem 1.875rem; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:background 0.15s;" onmouseover="this.style.background='#374151'" onmouseout="this.style.background='#111827'">
+          Jetzt Termin anfragen
+        </a>
+      </div>
+    </section>
+
+    <!-- Geeignet für -->
+    <section style="padding:2rem 1.5rem; background:#fafafa; border-top:1px solid #f3f4f6;">
+      <div style="max-width:64rem; margin:0 auto;">
+        <p style="font-size:0.875rem; color:#9ca3af; margin:0; line-height:1.6;">
+          <strong style="color:#374151; font-weight:600;">Geeignet für:</strong>
+          Steuerberater, Rechtsanwälte, Architekten, Unternehmensberater, Freelancer und lokale Dienstleister, die seriös und modern auftreten möchten.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <DemoFooter />
+</div>
+</BaseLayout>

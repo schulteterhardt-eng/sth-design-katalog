@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DemoHeader from '../../components/DemoHeader.astro';
+import DemoFooter from '../../components/DemoFooter.astro';
+import DemoCTA from '../../components/DemoCTA.astro';
+---
+
+<BaseLayout title="Premium & Elegant – STH Design-Katalog">
+<div style="display:flex; flex-direction:column; min-height:100vh; font-family:Georgia,'Book Antiqua',Palatino,serif;">
+  <DemoHeader showBack currentStyle="Premium & Elegant" />
+
+  <div style="flex:1; background:#fafaf9;">
+
+    <!-- Nav: Ultra-minimal -->
+    <nav style="background:#fafaf9; border-bottom:1px solid #e7e5e4; position:sticky; top:42px; z-index:40;">
+      <div style="max-width:72rem; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:68px;">
+        <div>
+          <span style="font-size:0.875rem; font-weight:400; color:#0c0a09; letter-spacing:0.22em; text-transform:uppercase; font-family:system-ui,sans-serif;">Maison Noble</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:2.5rem;" class="hidden md:flex">
+          {['Collection','Atelier','Heritage','Contact'].map(l => (
+            <a href="#" style="font-size:0.75rem; font-weight:400; color:#a8a29e; text-decoration:none; letter-spacing:0.14em; text-transform:uppercase; font-family:system-ui,sans-serif; transition:color 0.2s;" onmouseover="this.style.color='#0c0a09'" onmouseout="this.style.color='#a8a29e'">{l}</a>
+          ))}
+        </div>
+        <button style="background:none; border:none; cursor:pointer; color:#a8a29e;" class="md:hidden" aria-label="Menü">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero: Minimal, full height -->
+    <section style="min-height:90vh; display:flex; align-items:center; justify-content:center; padding:5rem 2rem; text-align:center; position:relative;">
+      <!-- Subtle background -->
+      <div style="position:absolute; inset:0; background:linear-gradient(160deg,#fafaf9 0%,#f0ece4 100%);" aria-hidden="true"></div>
+
+      <div style="position:relative; max-width:48ch; margin:0 auto;">
+        <p style="font-size:0.6875rem; font-weight:400; color:#d4af37; letter-spacing:0.3em; text-transform:uppercase; margin:0 0 3rem; font-family:system-ui,sans-serif;">Haute Couture · Paris · Berlin · 1924</p>
+        <h1 style="font-size:clamp(2.5rem,6vw,4.5rem); font-weight:300; color:#0c0a09; line-height:1.15; letter-spacing:-0.01em; margin:0 0 2.5rem;">
+          Die Kunst der<br />feinen Details.
+        </h1>
+        <!-- Gold divider -->
+        <div style="display:flex; align-items:center; gap:1rem; justify-content:center; margin-bottom:2.5rem;">
+          <div style="flex:1; max-width:4rem; height:1px; background:#d4af37;"></div>
+          <div style="width:4px; height:4px; background:#d4af37; transform:rotate(45deg);"></div>
+          <div style="flex:1; max-width:4rem; height:1px; background:#d4af37;"></div>
+        </div>
+        <p style="font-size:1.0625rem; color:#78716c; line-height:1.9; margin:0 0 3rem;">
+          Seit einem Jahrhundert entstehen in unserem Atelier Stücke, die Zeit überdauern – handgefertigt mit höchster Präzision und ausgesuchtesten Materialien.
+        </p>
+        <a href="#" style="display:inline-block; font-size:0.75rem; font-weight:400; color:#0c0a09; letter-spacing:0.24em; text-transform:uppercase; text-decoration:none; border-bottom:1px solid #d4af37; padding-bottom:0.375rem; font-family:system-ui,sans-serif; transition:color 0.2s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#0c0a09'">Die Collection entdecken</a>
+      </div>
+    </section>
+
+    <!-- Features: Minimalist rows -->
+    <section style="background:white; padding:6rem 2rem;">
+      <div style="max-width:56rem; margin:0 auto;">
+        <p style="font-size:0.6875rem; font-weight:400; color:#a8a29e; letter-spacing:0.24em; text-transform:uppercase; margin:0 0 4rem; text-align:center; font-family:system-ui,sans-serif;">Notre Savoir-Faire</p>
+        <div style="display:flex; flex-direction:column; gap:0;">
+          {[
+            { nr:'I',  title:'Handwerkskunst',   text:'Jedes Stück wird von Meisterschneidern in reiner Handarbeit gefertigt – kein Stich ohne Bewusstsein.' },
+            { nr:'II', title:'Materialkunde',     text:'Wir beziehen Stoffe ausschließlich von Manufakturen, die Tradition und Nachhaltigkeit vereinen.' },
+            { nr:'III', title:'Maßanfertigung',  text:'Jedes Stück wird nach Ihren Maßen und Vorstellungen individuell geschaffen.' },
+          ].map((f,i) => (
+            <div style={`display:grid; grid-template-columns:3rem 1fr; gap:2rem; align-items:start; padding:2.5rem 0; ${i>0?'border-top:1px solid #e7e5e4;':''}`}>
+              <span style="font-size:0.75rem; font-weight:400; color:#d4af37; letter-spacing:0.1em; padding-top:0.25rem; font-family:system-ui,sans-serif;">{f.nr}</span>
+              <div>
+                <h3 style="font-size:1rem; font-weight:400; color:#0c0a09; margin:0 0 0.75rem; letter-spacing:0.04em;">{f.title}</h3>
+                <p style="font-size:0.9375rem; color:#78716c; line-height:1.8; margin:0;">{f.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA: Sehr minimal -->
+    <section style="background:#0c0a09; padding:6rem 2rem; text-align:center;">
+      <div style="max-width:40rem; margin:0 auto;">
+        <div style="display:flex; align-items:center; gap:1rem; justify-content:center; margin-bottom:3rem;">
+          <div style="flex:1; max-width:3rem; height:1px; background:#d4af37; opacity:0.4;"></div>
+          <div style="width:3px; height:3px; background:#d4af37; transform:rotate(45deg);"></div>
+          <div style="flex:1; max-width:3rem; height:1px; background:#d4af37; opacity:0.4;"></div>
+        </div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2.25rem); font-weight:300; color:white; margin:0 0 1.25rem; letter-spacing:-0.01em;">Eine Kreation in Auftrag geben.</h2>
+        <p style="color:rgba(255,255,255,0.45); font-size:0.9375rem; line-height:1.8; margin:0 0 2.5rem; font-family:system-ui,sans-serif;">Persönliche Beratungstermine nach Vereinbarung. Diskret, individuell, zeitlos.</p>
+        <a href="#" style="display:inline-block; font-size:0.75rem; font-weight:400; color:#d4af37; letter-spacing:0.24em; text-transform:uppercase; text-decoration:none; border:1px solid rgba(212,175,55,0.4); padding:1rem 2.5rem; font-family:system-ui,sans-serif; transition:border-color 0.3s,color 0.3s;" onmouseover="this.style.borderColor='#d4af37';this.style.color='white'" onmouseout="this.style.borderColor='rgba(212,175,55,0.4)';this.style.color='#d4af37'">Termin anfragen</a>
+      </div>
+    </section>
+
+    <div style="background:#fafaf9; padding:1.25rem 2rem; border-top:1px solid #e7e5e4;">
+      <div style="max-width:72rem; margin:0 auto;">
+        <p style="font-size:0.8125rem; color:#a8a29e; margin:0; font-family:system-ui,sans-serif;"><strong style="color:#0c0a09;">Geeignet für:</strong> Luxushotels, Schmuckgeschäfte, Modeateliers, High-End-Restaurants, Premium-Marken, Galerien.</p>
+      </div>
+    </div>
+  </div>
+
+  <DemoFooter />
+</div>
+</BaseLayout>

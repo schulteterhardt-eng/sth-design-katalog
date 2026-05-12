@@ -1,0 +1,49 @@
+---
+interface Props {
+  headline: string;
+  body?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  bg?: string;
+  color?: string;
+  buttonBg?: string;
+  buttonColor?: string;
+  align?: 'left' | 'center';
+}
+const {
+  headline,
+  body,
+  buttonText = 'Jetzt anfragen',
+  buttonHref = '#',
+  bg = '#0f2d4a',
+  color = 'white',
+  buttonBg = 'white',
+  buttonColor = '#0f2d4a',
+  align = 'center',
+} = Astro.props;
+---
+
+<section style={`background:${bg}; color:${color}; padding:5rem 1.5rem;`}>
+  <div style={`max-width:52rem; margin:0 auto; text-align:${align};`}>
+    <h2 style={`color:${color}; font-size:clamp(1.625rem,3vw,2.25rem); font-weight:700; line-height:1.2; margin:0 0 1rem;`}>
+      {headline}
+    </h2>
+    {body && (
+      <p style={`color:${color}; opacity:0.72; font-size:1.0625rem; line-height:1.7; margin:0 0 2rem; max-width:46ch; ${align==='center'?'margin-left:auto;margin-right:auto;':''}`}>
+        {body}
+      </p>
+    )}
+    <a
+      href={buttonHref}
+      class="cta-btn"
+      style={`display:inline-flex; align-items:center; gap:0.5rem; background:${buttonBg}; color:${buttonColor}; font-size:0.875rem; font-weight:700; letter-spacing:0.04em; padding:0.9rem 2rem; text-decoration:none; transition:filter 0.2s, transform 0.2s;`}
+    >
+      {buttonText}
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta-btn:hover { filter: brightness(0.9); transform: translateY(-2px); }
+</style>
