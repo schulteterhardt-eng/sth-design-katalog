@@ -2,82 +2,198 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DemoHeader from '../../components/DemoHeader.astro';
 import DemoFooter from '../../components/DemoFooter.astro';
-import DemoCTA from '../../components/DemoCTA.astro';
 ---
 
+<style>
+  @keyframes fadeUp  { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeIn  { from { opacity:0; } to { opacity:1; } }
+  @keyframes spinCW  { to { transform:rotate(360deg);  } }
+  @keyframes spinCCW { to { transform:rotate(-360deg); } }
+  @keyframes barFill { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+  @keyframes ring    { 0% { transform:scale(1); opacity:0.5; } 100% { transform:scale(1.7); opacity:0; } }
+
+  .fu { opacity:0; animation:fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
+  .fi { opacity:0; animation:fadeIn 0.9s ease forwards; }
+  .d1 { animation-delay:0.1s;  }
+  .d2 { animation-delay:0.24s; }
+  .d3 { animation-delay:0.4s;  }
+  .d4 { animation-delay:0.56s; }
+  .d5 { animation-delay:0.72s; }
+
+  .spin-cw  { animation:spinCW  50s linear infinite; }
+  .spin-ccw { animation:spinCCW 34s linear infinite; }
+  .ring-pulse { animation:ring 2.2s ease-out infinite; }
+
+  .bar { transform-origin:left; transform:scaleX(0); animation:barFill 1s cubic-bezier(0.22,1,0.36,1) forwards; }
+
+  .card { border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:2rem; cursor:default;
+          transition:transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s ease, border-color 0.28s ease; }
+  .card:hover { transform:translateY(-7px); box-shadow:0 24px 48px rgba(0,0,0,0.35); border-color:rgba(255,255,255,0.18); }
+
+  .ul-link { position:relative; text-decoration:none; }
+  .ul-link::after { content:''; position:absolute; bottom:-2px; left:0; width:100%; height:1px;
+                   background:#818cf8; transform:scaleX(0); transform-origin:left;
+                   transition:transform 0.35s cubic-bezier(0.22,1,0.36,1); }
+  .ul-link:hover::after { transform:scaleX(1); }
+
+  .btn-anim { transition:opacity 0.2s, transform 0.2s cubic-bezier(0.22,1,0.36,1); }
+  .btn-anim:hover { opacity:0.85; transform:translateY(-2px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fu, .fi { animation:none !important; opacity:1 !important; transform:none !important; }
+    .spin-cw, .spin-ccw, .ring-pulse, .bar { animation:none !important; transform:scaleX(1) !important; opacity:1 !important; }
+    .card, .btn-anim { transition:none !important; }
+    .ul-link::after { transition:none !important; }
+  }
+</style>
+
 <BaseLayout title="Animiert & Interaktiv – STH Design-Katalog">
-<div style="display:flex; flex-direction:column; min-height:100vh; font-family:system-ui,-apple-system,sans-serif;">
+<div style="display:flex; flex-direction:column; min-height:100vh; font-family:system-ui,-apple-system,sans-serif; background:#090911; color:white;">
+
   <DemoHeader showBack currentStyle="Animiert & Interaktiv" />
 
-  <div style="flex:1; background:#0f0e17;">
-
-    <!-- Nav: Glasmorphism -->
-    <nav style="background:rgba(15,14,23,0.8); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.07); position:sticky; top:42px; z-index:40;">
-      <div style="max-width:72rem; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:64px;">
-        <span style="font-size:1rem; font-weight:800; background:linear-gradient(90deg,#a855f7,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:0.02em;">Motion Lab</span>
-        <div style="display:flex; align-items:center; gap:2rem;" class="hidden md:flex">
-          {['Work','Services','About','Contact'].map(l => (
-            <a href="#" style="font-size:0.8125rem; color:rgba(255,255,255,0.45); text-decoration:none; letter-spacing:0.08em; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">{l}</a>
-          ))}
-          <a href="#" style="background:linear-gradient(135deg,#a855f7,#ec4899); color:white; font-size:0.8125rem; font-weight:700; padding:0.5rem 1.25rem; text-decoration:none; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Start Project</a>
-        </div>
-        <button style="background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.5);" class="md:hidden" aria-label="Menü">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
+  <!-- Nav -->
+  <nav style="background:rgba(9,9,17,0.9); backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,0.07); position:sticky; top:42px; z-index:40;">
+    <div style="max-width:80rem; margin:0 auto; padding:0 2rem; height:60px; display:flex; align-items:center; justify-content:space-between;">
+      <span style="font-size:1.0625rem; font-weight:800; color:white; letter-spacing:-0.01em;">Forma<span style="color:#818cf8;">.</span></span>
+      <div style="display:flex; align-items:center; gap:2.25rem;" class="hidden md:flex">
+        {['Work','Services','Lab','Contact'].map(l => (
+          <a href="#" class="ul-link" style="font-size:0.8125rem; color:rgba(255,255,255,0.4); letter-spacing:0.06em; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">{l}</a>
+        ))}
+        <a href="#" class="btn-anim" style="background:#818cf8; color:white; font-size:0.8125rem; font-weight:700; padding:0.5rem 1.25rem; border-radius:6px; text-decoration:none;">Start</a>
       </div>
-    </nav>
+      <button style="background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.45);" class="md:hidden" aria-label="Menü">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
 
-    <!-- Hero: Animierter Gradient-Hintergrund -->
-    <section class="anim-shimmer" style="background:linear-gradient(135deg,#1e1b4b,#4c1d95,#831843,#1e1b4b); min-height:90vh; display:flex; align-items:center; padding:5rem 1.5rem; position:relative; overflow:hidden;">
-      <!-- Radiale Lichtpunkte -->
-      <div class="anim-float" style="position:absolute; top:20%; left:15%; width:300px; height:300px; background:radial-gradient(circle,rgba(168,85,247,0.35),transparent 70%); border-radius:50%; pointer-events:none;" aria-hidden="true"></div>
-      <div class="anim-float d2" style="position:absolute; bottom:20%; right:10%; width:250px; height:250px; background:radial-gradient(circle,rgba(236,72,153,0.3),transparent 70%); border-radius:50%; pointer-events:none;" aria-hidden="true"></div>
+  <main style="flex:1;">
 
-      <div style="max-width:72rem; margin:0 auto; width:100%; position:relative;">
-        <p class="anim-up" style="font-size:0.75rem; font-weight:700; color:#a855f7; letter-spacing:0.2em; text-transform:uppercase; margin:0 0 1.25rem;">Creative Motion Studio</p>
-        <h1 class="anim-up d1" style="font-size:clamp(2.5rem,7vw,5rem); font-weight:900; color:white; line-height:1.0; letter-spacing:-0.03em; margin:0 0 1.5rem;">
-          Bewegung<br />
-          <span style="background:linear-gradient(90deg,#a855f7,#ec4899,#fb923c); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">trifft Design.</span>
+    <!-- Hero: Staggered Fade-up + rotierende Ringe -->
+    <section style="min-height:90vh; display:flex; align-items:center; padding:5rem 2rem; position:relative; overflow:hidden;">
+
+      <!-- Subtiler Hintergrund-Glow -->
+      <div style="position:absolute; top:30%; left:0%; width:480px; height:480px; background:radial-gradient(circle,rgba(99,102,241,0.07) 0%,transparent 70%); pointer-events:none;" aria-hidden="true"></div>
+
+      <!-- Orbit-Ringe (nur Desktop) -->
+      <div style="position:absolute; top:50%; right:6%; transform:translateY(-50%); pointer-events:none;" aria-hidden="true" class="hidden lg:block">
+        <div class="spin-cw"  style="width:360px; height:360px; border:1px solid rgba(129,140,248,0.13); border-radius:50%;"></div>
+        <div class="spin-ccw" style="position:absolute; top:50%; left:50%; width:240px; height:240px; margin:-120px 0 0 -120px; border:1px solid rgba(129,140,248,0.09); border-radius:50%;"></div>
+        <!-- Mittelpunkt + Pulsring -->
+        <div style="position:absolute; top:50%; left:50%; width:8px; height:8px; margin:-4px 0 0 -4px; background:#818cf8; border-radius:50%;"></div>
+        <div class="ring-pulse" style="position:absolute; top:50%; left:50%; width:20px; height:20px; margin:-10px 0 0 -10px; border:1.5px solid rgba(129,140,248,0.45); border-radius:50%;"></div>
+      </div>
+
+      <div style="max-width:80rem; margin:0 auto; width:100%; position:relative;">
+        <p class="fu d1" style="font-size:0.6875rem; font-weight:700; color:#818cf8; letter-spacing:0.22em; text-transform:uppercase; margin:0 0 2rem;">Digital Studio · Köln</p>
+        <h1 style="font-size:clamp(2.75rem,8.5vw,6.5rem); font-weight:900; color:white; line-height:0.95; letter-spacing:-0.04em; margin:0 0 2rem;">
+          <span class="fu d2" style="display:block;">Jede Bewegung</span>
+          <span class="fu d3" style="display:block; color:#818cf8;">hat Bedeutung.</span>
         </h1>
-        <p class="anim-up d2" style="color:rgba(255,255,255,0.6); font-size:1.0625rem; line-height:1.75; max-width:44ch; margin:0 0 2.5rem;">
-          Wir verbinden Animation, Interaktion und Storytelling zu digitalen Erlebnissen, die Menschen berühren – und im Gedächtnis bleiben.
+        <p class="fu d4" style="font-size:1.0625rem; color:rgba(255,255,255,0.42); line-height:1.8; max-width:44ch; margin:0 0 2.5rem;">
+          Interfaces, die sich richtig anfühlen. Animationen, die führen – nicht ablenken. Digitale Produkte mit Haltung.
         </p>
-        <div class="anim-up d3" style="display:flex; flex-wrap:wrap; gap:1rem;">
-          <a href="#" class="anim-glow" style="background:linear-gradient(135deg,#a855f7,#ec4899); color:white; font-size:0.9375rem; font-weight:700; padding:1rem 2rem; text-decoration:none; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Projekt starten</a>
-          <a href="#" style="border:1px solid rgba(255,255,255,0.2); color:white; font-size:0.9375rem; font-weight:600; padding:1rem 1.75rem; text-decoration:none; transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.6)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.background='transparent'">Showreel ansehen</a>
+        <div class="fu d5" style="display:flex; flex-wrap:wrap; gap:1rem;">
+          <a href="#" class="btn-anim" style="background:#818cf8; color:white; font-size:0.9375rem; font-weight:700; padding:0.9375rem 2rem; border-radius:8px; text-decoration:none;">Projekt starten</a>
+          <a href="#" style="border:1px solid rgba(255,255,255,0.16); color:white; font-size:0.9375rem; padding:0.9375rem 2rem; border-radius:8px; text-decoration:none; transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)';this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.16)';this.style.background='transparent'">Arbeiten ansehen</a>
         </div>
       </div>
     </section>
 
-    <!-- Services: Animated Cards -->
-    <section style="background:#0f0e17; padding:5rem 1.5rem;">
-      <div style="max-width:72rem; margin:0 auto;">
-        <p class="anim-up" style="font-size:0.75rem; font-weight:700; color:#a855f7; letter-spacing:0.2em; text-transform:uppercase; margin:0 0 0.75rem;">What we do</p>
-        <h2 class="anim-up d1" style="font-size:clamp(1.5rem,3vw,2.25rem); font-weight:900; color:white; margin:0 0 3rem; letter-spacing:-0.02em;">Leistungen mit Seele.</h2>
+    <!-- Interaktive Karten -->
+    <section style="background:#0c0c18; padding:6rem 2rem; border-top:1px solid rgba(255,255,255,0.06);">
+      <div style="max-width:80rem; margin:0 auto;">
+        <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:3.5rem;">
+          <span style="font-size:0.6875rem; font-weight:700; color:#818cf8; letter-spacing:0.22em; text-transform:uppercase; white-space:nowrap;">Leistungen</span>
+          <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+        </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.25rem;">
           {[
-            { gradient:'linear-gradient(135deg,#4f46e5,#7c3aed)', icon:'✦', title:'Web Animation', text:'CSS- und JS-Animationen, die Nutzererlebnisse lebendig machen.' },
-            { gradient:'linear-gradient(135deg,#7c3aed,#ec4899)', icon:'◈', title:'UI Motion Design', text:'Micro-Interactions und State-Transitions für ein flüssiges Interface.' },
-            { gradient:'linear-gradient(135deg,#ec4899,#f97316)', icon:'◇', title:'Interactive Storytelling', text:'Scroll-basierte Erlebnisse, die eine Geschichte mit Bewegung erzählen.' },
-          ].map((s,i) => (
-            <div class={`anim-up d${i+1}`} style={`background:#1a1825; border:1px solid rgba(255,255,255,0.07); padding:2rem; transition:border-color 0.3s,transform 0.3s;`} onmouseover="this.style.borderColor='rgba(168,85,247,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform='none'">
-              <div style={`width:40px; height:40px; background:${s.gradient}; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem; font-size:1.125rem; color:white;`}>{s.icon}</div>
-              <h3 style="font-size:1rem; font-weight:800; color:white; margin:0 0 0.625rem;">{s.title}</h3>
-              <p style="color:rgba(255,255,255,0.45); font-size:0.9375rem; line-height:1.65; margin:0;">{s.text}</p>
+            { num:'01', color:'#818cf8', titel:'Web Interfaces',    text:'Websites mit durchdachten Animationen – nicht fürs Auge, sondern für das Verständnis.' },
+            { num:'02', color:'#34d399', titel:'Micro-Interactions', text:'Buttons, die reagieren. Formulare, die führen. Kleine Bewegungen mit großer Wirkung.' },
+            { num:'03', color:'#60a5fa', titel:'Motion Design',      text:'Animationen, die Markenwerte transportieren – konsistent und performance-optimiert.' },
+            { num:'04', color:'#f472b6', titel:'Prototyping',        text:'Interaktive Prototypen, bevor auch nur eine Zeile Produktionscode entsteht.' },
+          ].map(c => (
+            <div class="card" style={`background:${c.color}0d;`}>
+              <div style={`display:inline-flex; width:36px; height:36px; background:${c.color}22; border-radius:8px; align-items:center; justify-content:center; margin-bottom:1.25rem;`}>
+                <div style={`width:10px; height:10px; background:${c.color}; border-radius:2px; transition:transform 0.3s cubic-bezier(0.22,1,0.36,1);`}></div>
+              </div>
+              <p style={`font-size:0.6875rem; font-weight:700; color:${c.color}; letter-spacing:0.14em; margin:0 0 0.5rem;`}>{c.num}</p>
+              <h3 style="font-size:1rem; font-weight:700; color:white; margin:0 0 0.5rem;">{c.titel}</h3>
+              <p style="font-size:0.9375rem; color:rgba(255,255,255,0.38); line-height:1.7; margin:0;">{c.text}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <DemoCTA headline="Bereit, Ihre Website zum Leben zu erwecken?" body="Zeigen Sie uns Ihre Idee – wir zeigen Ihnen, was möglich ist." buttonText="Jetzt loslegen" bg="linear-gradient(135deg,#4c1d95,#831843)" color="white" buttonBg="linear-gradient(135deg,#a855f7,#ec4899)" buttonColor="white" />
+    <!-- Animierte Progress-Bars -->
+    <section style="background:#090911; padding:6rem 2rem; border-top:1px solid rgba(255,255,255,0.06);">
+      <div style="max-width:80rem; margin:0 auto; display:grid; grid-template-columns:1fr; gap:5rem; align-items:center;" class="lg:grid-cols-2">
 
-    <div style="background:#0f0e17; padding:1.25rem 1.5rem; border-top:1px solid rgba(255,255,255,0.07);">
-      <div style="max-width:72rem; margin:0 auto;">
-        <p style="font-size:0.8125rem; color:rgba(255,255,255,0.35); margin:0;"><strong style="color:rgba(255,255,255,0.6);">Geeignet für:</strong> Kreativagenturen, Portfolio-Seiten, SaaS-Produkte, App-Startups, digitale Kampagnen.</p>
+        <div>
+          <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:2rem;">
+            <span style="font-size:0.6875rem; font-weight:700; color:#818cf8; letter-spacing:0.22em; text-transform:uppercase; white-space:nowrap;">Animationsarten</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+          </div>
+          <h2 style="font-size:clamp(1.5rem,3vw,2.25rem); font-weight:800; color:white; margin:0 0 1.25rem; letter-spacing:-0.025em; line-height:1.1;">Performance<br />zuerst.</h2>
+          <p style="font-size:1rem; color:rgba(255,255,255,0.4); line-height:1.8; margin:0 0 2rem; max-width:40ch;">
+            Jede Animation wird auf FPS, Accessibility und Ladezeit geprüft. Schön ist erst nach schnell.
+          </p>
+          <a href="#" class="ul-link" style="font-size:0.875rem; color:rgba(255,255,255,0.55); letter-spacing:0.04em;">Animation Guidelines →</a>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:2rem;">
+          {[
+            { label:'CSS Transitions & Transforms', pct:96, color:'#818cf8', delay:'2.2s' },
+            { label:'Keyframe Animationen',          pct:89, color:'#34d399', delay:'2.45s' },
+            { label:'Scroll-getriggerte Effekte',   pct:74, color:'#60a5fa', delay:'2.7s'  },
+            { label:'Micro-Interactions',            pct:93, color:'#f472b6', delay:'2.95s' },
+          ].map(b => (
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.75rem;">
+                <span style="font-size:0.875rem; color:rgba(255,255,255,0.65); font-weight:500;">{b.label}</span>
+                <span style={`font-size:0.8125rem; font-weight:700; color:${b.color};`}>{b.pct}%</span>
+              </div>
+              <div style="height:3px; background:rgba(255,255,255,0.07); border-radius:2px; overflow:hidden;">
+                <div
+                  class="bar"
+                  style={`height:100%; width:${b.pct}%; background:${b.color}; border-radius:2px; animation-delay:${b.delay};`}
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background:#0c0c18; padding:6rem 2rem; border-top:1px solid rgba(255,255,255,0.06);">
+      <div style="max-width:80rem; margin:0 auto; display:grid; grid-template-columns:1fr; gap:3rem; align-items:center;" class="lg:grid-cols-[3fr_2fr]">
+        <div>
+          <p style="font-size:0.6875rem; font-weight:700; color:#818cf8; letter-spacing:0.22em; text-transform:uppercase; margin:0 0 1.25rem;">Zusammenarbeiten</p>
+          <h2 style="font-size:clamp(1.5rem,3.5vw,2.5rem); font-weight:800; color:white; margin:0 0 1rem; letter-spacing:-0.025em; line-height:1.1;">Ihr Projekt<br />verdient Bewegung.</h2>
+          <p style="font-size:1rem; color:rgba(255,255,255,0.38); line-height:1.75; margin:0; max-width:42ch;">Erzählen Sie uns von Ihrer Idee – wir zeigen, was möglich ist.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:1rem; align-items:flex-start;" class="lg:items-end">
+          <a href="#" class="btn-anim" style="background:#818cf8; color:white; font-size:0.9375rem; font-weight:700; padding:1rem 2rem; border-radius:8px; text-decoration:none; white-space:nowrap;">Gespräch vereinbaren</a>
+          <span style="font-size:0.875rem; color:rgba(255,255,255,0.28);">hello@forma.studio</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Geeignet für -->
+    <section style="padding:1.75rem 2rem; background:#090911; border-top:1px solid rgba(255,255,255,0.06);">
+      <div style="max-width:80rem; margin:0 auto;">
+        <p style="font-size:0.875rem; color:rgba(255,255,255,0.28); margin:0; line-height:1.6;">
+          <strong style="color:rgba(255,255,255,0.55); font-weight:600;">Geeignet für:</strong>
+          Digitale Agenturen, SaaS-Produkte, App-Startups, interaktive Portfolios und Marken, die modernes Web-Design mit Qualitätsanspruch kommunizieren wollen.
+        </p>
+      </div>
+    </section>
+
+  </main>
 
   <DemoFooter />
 </div>
