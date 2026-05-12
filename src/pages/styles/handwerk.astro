@@ -2,99 +2,184 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DemoHeader from '../../components/DemoHeader.astro';
 import DemoFooter from '../../components/DemoFooter.astro';
-import DemoCTA from '../../components/DemoCTA.astro';
 ---
 
 <BaseLayout title="Handwerk & Bodenständig – STH Design-Katalog">
-<div style="display:flex; flex-direction:column; min-height:100vh; font-family:system-ui,-apple-system,sans-serif;">
+<div style="display:flex; flex-direction:column; min-height:100vh; font-family:system-ui,-apple-system,sans-serif; background:#faf7f2;">
+
   <DemoHeader showBack currentStyle="Handwerk & Bodenständig" />
 
-  <div style="flex:1; background:#fef9f0;">
-
-    <!-- Nav -->
-    <nav style="background:#fef9f0; border-bottom:2px solid #292524; position:sticky; top:42px; z-index:40;">
-      <div style="max-width:72rem; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:64px;">
-        <div>
-          <span style="font-size:1.25rem; font-weight:900; color:#292524; letter-spacing:-0.02em;">Tischler</span>
-          <span style="font-size:1.25rem; font-weight:900; color:#b45309; letter-spacing:-0.02em;">Brandt</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:1.75rem;" class="hidden md:flex">
-          {['Leistungen','Galerie','Über uns','Kontakt'].map(l => (
-            <a href="#" style="font-size:0.875rem; font-weight:600; color:#44403c; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#b45309'" onmouseout="this.style.color='#44403c'">{l}</a>
-          ))}
-          <a href="#" style="font-size:0.8125rem; color:#44403c; font-weight:600; display:flex; align-items:center; gap:0.375rem; text-decoration:none;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            0203 · 123 456
-          </a>
-        </div>
-        <button style="background:none; border:none; cursor:pointer; color:#44403c;" class="md:hidden" aria-label="Menü">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
+  <!-- Demo-Navigation -->
+  <nav style="background:#1c1412; border-bottom:3px solid #d97706;">
+    <div style="max-width:72rem; margin:0 auto; padding:0 1.5rem; height:60px; display:flex; align-items:center; justify-content:space-between;">
+      <div>
+        <span style="font-size:1.125rem; font-weight:900; color:white; letter-spacing:-0.01em;">Sanitär</span>
+        <span style="font-size:1.125rem; font-weight:900; color:#d97706;">Hoffmann</span>
       </div>
-    </nav>
+      <div style="display:flex; align-items:center; gap:1.75rem;" class="hidden md:flex">
+        {['Leistungen','Über uns','Notdienst','Kontakt'].map(l => (
+          <a href="#" style="font-size:0.875rem; color:rgba(255,255,255,0.65); text-decoration:none; transition:color 0.15s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">{l}</a>
+        ))}
+        <a href="#" style="display:flex; align-items:center; gap:0.5rem; background:#d97706; color:white; font-size:0.875rem; font-weight:700; padding:0.5rem 1.125rem; text-decoration:none; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          0203 · 456 789
+        </a>
+      </div>
+      <button style="background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.6);" class="md:hidden" aria-label="Menü">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
 
-    <!-- Hero: Asymmetric -->
-    <section style="overflow:hidden;">
-      <div style="max-width:72rem; margin:0 auto; padding:0 1.5rem; display:grid; grid-template-columns:1fr; gap:0;" class="lg:grid-cols-[3fr_2fr]">
+  <main style="flex:1;">
 
-        <!-- Text: groß, asymmetrisch -->
-        <div style="padding:4rem 0 4rem; display:flex; flex-direction:column; justify-content:center;">
-          <p style="font-size:0.75rem; font-weight:700; color:#b45309; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 1.25rem;">Tischlermeister · Duisburg · seit 1992</p>
-          <h1 style="font-size:clamp(2.75rem,7vw,5.5rem); font-weight:900; color:#292524; line-height:0.95; letter-spacing:-0.03em; margin:0 0 2rem;">
-            Holz.<br />
-            <span style="color:#b45309;">Handwerk.</span><br />
-            Herzblut.
+    <!-- Notdienst-Banner -->
+    <div style="background:#d97706; padding:0.625rem 1.5rem;">
+      <div style="max-width:72rem; margin:0 auto; display:flex; align-items:center; justify-content:center; gap:0.75rem; flex-wrap:wrap;">
+        <span style="font-size:0.8125rem; font-weight:700; color:white;">🔧 24h-Notdienst verfügbar</span>
+        <span style="color:rgba(255,255,255,0.6); font-size:0.75rem;">—</span>
+        <a href="#" style="font-size:0.8125rem; font-weight:700; color:white; text-decoration:underline; text-underline-offset:2px;">Jetzt anrufen: 0203 · 456 789</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section style="background:#1c1412; padding:5rem 1.5rem;">
+      <div style="max-width:72rem; margin:0 auto; display:grid; grid-template-columns:1fr; gap:3rem; align-items:center;" class="lg:grid-cols-[3fr_2fr]">
+
+        <div>
+          <p style="font-size:0.8125rem; font-weight:600; color:#d97706; letter-spacing:0.12em; text-transform:uppercase; margin:0 0 1.25rem;">Sanitär · Heizung · Rohrreinigung · Duisburg</p>
+          <h1 style="font-size:clamp(2.25rem,5vw,3.5rem); font-weight:900; color:white; line-height:1.1; letter-spacing:-0.02em; margin:0 0 1.5rem;">
+            Schnell da.<br />Sauber gemacht.<br /><span style="color:#d97706;">Garantiert.</span>
           </h1>
-          <div style="width:3rem; height:3px; background:#b45309; margin-bottom:1.5rem;"></div>
-          <p style="color:#78716c; font-size:1.0625rem; line-height:1.75; max-width:42ch; margin:0 0 2.5rem;">
-            Massivholzmöbel und Innenausbau nach Maß. Keine Katalogware, keine Kompromisse – nur ehrliches Handwerk, das hält.
+          <p style="font-size:1.0625rem; color:rgba(255,255,255,0.6); line-height:1.75; max-width:46ch; margin:0 0 2.5rem;">
+            Verstopfte Rohre, Heizungsausfall, Wasserschaden – wir kommen meist noch am selben Tag und lösen das Problem dauerhaft.
           </p>
-          <div style="display:flex; flex-wrap:wrap; gap:0.875rem;">
-            <a href="#" style="background:#292524; color:white; font-size:0.875rem; font-weight:700; padding:1rem 2rem; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='#44403c'" onmouseout="this.style.background='#292524'">Kostenlos anfragen</a>
-            <a href="#" style="border:2px solid #292524; color:#292524; font-size:0.875rem; font-weight:700; padding:1rem 2rem; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='transparent'">Galerie ansehen</a>
+          <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+            <a href="#" style="display:flex; align-items:center; gap:0.625rem; background:#d97706; color:white; font-size:1rem; font-weight:800; padding:1rem 1.875rem; text-decoration:none; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              0203 · 456 789
+            </a>
+            <a href="#" style="border:2px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.8); font-size:0.9375rem; font-weight:600; padding:1rem 1.75rem; text-decoration:none; transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">Angebot anfragen</a>
           </div>
         </div>
 
-        <!-- Right: Earthy color block -->
-        <div style="background:linear-gradient(160deg,#b45309,#92400e); display:flex; align-items:center; justify-content:center; padding:3rem; min-height:340px;" class="hidden lg:flex" aria-hidden="true">
-          <div style="text-align:center; color:white;">
-            <p style="font-size:4rem; font-weight:900; line-height:1; margin:0;">30+</p>
-            <p style="font-size:0.875rem; opacity:0.75; letter-spacing:0.1em; text-transform:uppercase; margin:0.5rem 0 0;">Jahre Erfahrung</p>
-          </div>
+        <!-- Einsatzbereiche -->
+        <div style="background:#2a1f1a; padding:2rem; border-left:4px solid #d97706;" class="hidden lg:block">
+          <p style="font-size:0.75rem; font-weight:600; color:#d97706; letter-spacing:0.12em; text-transform:uppercase; margin:0 0 1.25rem;">Wir sind für Sie da bei</p>
+          <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0.875rem;">
+            {['Rohrbruch & Wasserschaden','Heizungsausfall','Rohrverstopfung','Badsanierung','Neuinstallation','Wartung & Inspektion'].map(p => (
+              <li style="display:flex; align-items:center; gap:0.75rem; font-size:0.9375rem; color:rgba(255,255,255,0.75);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#d97706" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                {p}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Services mit Nummern -->
-    <section style="background:white; padding:5rem 1.5rem;">
+    <!-- Leistungen -->
+    <section style="background:#faf7f2; padding:4.5rem 1.5rem;">
       <div style="max-width:72rem; margin:0 auto;">
-        <h2 style="font-size:clamp(1.5rem,3vw,2rem); font-weight:900; color:#292524; margin:0 0 3rem; letter-spacing:-0.02em;">Was wir machen.</h2>
-        <div style="display:flex; flex-direction:column; gap:0;">
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem); font-weight:900; color:#1c1412; margin:0 0 0.5rem; letter-spacing:-0.015em;">Unsere Leistungen</h2>
+        <p style="font-size:1rem; color:#78716c; margin:0 0 3rem;">Alles aus einer Hand – schnell, sauber und zum Festpreis.</p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1.25rem;">
           {[
-            { nr:'01', title:'Massivholzmöbel', text:'Tische, Schränke, Regale – nach Ihren Maßen und Vorstellungen gefertigt.' },
-            { nr:'02', title:'Innenausbau & Küchen', text:'Kompletter Innenausbau vom Dachboden bis zum Keller – sauber und termingerecht.' },
-            { nr:'03', title:'Türen & Fenster', text:'Einbau, Reparatur und Restaurierung von Holztüren und -fenstern.' },
-          ].map((s,i) => (
-            <div style={`display:flex; gap:2rem; align-items:flex-start; padding:2rem 0; ${i>0?'border-top:1px solid #e7e5e4;':''}`}>
-              <span style="font-size:2.5rem; font-weight:900; color:#e7e5e4; line-height:1; min-width:3rem; font-variant-numeric:tabular-nums;">{s.nr}</span>
-              <div>
-                <h3 style="font-size:1.125rem; font-weight:800; color:#292524; margin:0 0 0.5rem;">{s.title}</h3>
-                <p style="color:#78716c; font-size:0.9375rem; line-height:1.65; margin:0;">{s.text}</p>
-              </div>
+            { icon:'🚿', titel:'Sanitär',          text:'Installation, Reparatur und Austausch aller Sanitäranlagen – Dusche, WC, Waschbecken.' },
+            { icon:'🔥', titel:'Heizung',           text:'Wartung, Entstörung und Neuinstallation von Heizungsanlagen aller Hersteller.' },
+            { icon:'🔧', titel:'Rohrreinigung',    text:'Verstopfte Abflüsse und Rohre – wir reinigen schnell und gründlich.' },
+            { icon:'🏗️', titel:'Badsanierung',     text:'Komplette Bäder von der Planung bis zur Übergabe – alles aus einer Hand.' },
+            { icon:'💧', titel:'Wasserschaden',    text:'Schnelle Soforthilfe bei Rohrbruch und Leckagen – auch nachts und am Wochenende.' },
+            { icon:'📋', titel:'Wartungsvertrag', text:'Regelmäßige Inspektion für zuverlässige Anlagen – mit Priorität im Notfall.' },
+          ].map(l => (
+            <div style="background:white; border:1px solid #e7e0d6; border-top:3px solid #d97706; padding:1.75rem; transition:border-top-color 0.15s,box-shadow 0.15s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
+              <span style="font-size:1.75rem; display:block; margin-bottom:1rem;">{l.icon}</span>
+              <h3 style="font-size:1rem; font-weight:700; color:#1c1412; margin:0 0 0.5rem;">{l.titel}</h3>
+              <p style="font-size:0.9rem; color:#78716c; line-height:1.65; margin:0;">{l.text}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <DemoCTA headline="Haben Sie ein Projekt? Wir freuen uns drauf." body="Rufen Sie an oder schreiben Sie uns – wir melden uns innerhalb von 24 Stunden." buttonText="Jetzt Kontakt aufnehmen" bg="#292524" color="white" buttonBg="#b45309" buttonColor="white" />
-
-    <div style="background:#fef9f0; padding:1.25rem 1.5rem; border-top:2px solid #292524;">
+    <!-- Warum dieser Betrieb -->
+    <section style="background:#1c1412; padding:4.5rem 1.5rem;">
       <div style="max-width:72rem; margin:0 auto;">
-        <p style="font-size:0.8125rem; color:#78716c; margin:0;"><strong style="color:#292524;">Geeignet für:</strong> Tischler, Elektriker, Maurer, Maler, Klempner, Bäcker – alle lokalen Handwerksbetriebe und Familienunternehmen.</p>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem); font-weight:900; color:white; margin:0 0 0.5rem;">Warum Hoffmann?</h2>
+        <p style="color:rgba(255,255,255,0.5); font-size:1rem; margin:0 0 3rem;">Weil wir liefern, was wir versprechen.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1px; background:rgba(255,255,255,0.08);">
+          {[
+            { titel:'Seit 1989 im Ruhrgebiet',    text:'Mehr als 35 Jahre Erfahrung. Wir kennen die Leitungen der Region wie unsere Westentasche.' },
+            { titel:'Meisterbetrieb',              text:'Eingetragener Meisterbetrieb, geprüft und zertifiziert. Kein Pfusch, kein Risiko.' },
+            { titel:'Festpreisgarantie',           text:'Was wir anbieten, das kostet es auch. Keine versteckten Kosten, kein böses Erwachen.' },
+            { titel:'Gleichtags-Einsatz möglich', text:'Für dringende Fälle kommen wir meist noch am selben Tag – auch samstags.' },
+          ].map(g => (
+            <div style="background:#251a15; padding:2rem; transition:background 0.15s;" onmouseover="this.style.background='#2d2018'" onmouseout="this.style.background='#251a15'">
+              <div style="display:flex; align-items:center; gap:0.625rem; margin-bottom:0.875rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#d97706" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <h3 style="font-size:0.9375rem; font-weight:700; color:white; margin:0;">{g.titel}</h3>
+              </div>
+              <p style="font-size:0.875rem; color:rgba(255,255,255,0.5); line-height:1.65; margin:0;">{g.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+
+    <!-- Ablauf -->
+    <section style="background:#faf7f2; padding:4.5rem 1.5rem; border-top:4px solid #d97706;">
+      <div style="max-width:72rem; margin:0 auto;">
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem); font-weight:900; color:#1c1412; margin:0 0 0.5rem;">So läuft es ab</h2>
+        <p style="font-size:1rem; color:#78716c; margin:0 0 3rem;">Unkompliziert und ohne langes Warten.</p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0;">
+          {[
+            { nr:'1', titel:'Anruf oder Anfrage', text:'Sie schildern das Problem kurz – telefonisch oder per Formular.' },
+            { nr:'2', titel:'Termin',              text:'Wir nennen Ihnen direkt einen Termin, oft noch für denselben Tag.' },
+            { nr:'3', titel:'Einsatz',             text:'Unser Monteur kommt pünktlich, mit dem richtigen Werkzeug.' },
+            { nr:'4', titel:'Fertig',              text:'Die Arbeit ist erledigt, der Bereich sauber hinterlassen. Rechnung kommt per Post.' },
+          ].map((s, i) => (
+            <div style={`padding:2rem 1.75rem; border:1px solid #e7e0d6; ${i > 0 ? 'border-left:none;' : ''} background:white; position:relative;`}>
+              <div style="width:36px; height:36px; background:#d97706; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+                <span style="font-size:1rem; font-weight:900; color:white;">{s.nr}</span>
+              </div>
+              <h3 style="font-size:0.9375rem; font-weight:700; color:#1c1412; margin:0 0 0.5rem;">{s.titel}</h3>
+              <p style="font-size:0.875rem; color:#78716c; line-height:1.6; margin:0;">{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt-CTA -->
+    <section style="background:#d97706; padding:4rem 1.5rem;">
+      <div style="max-width:72rem; margin:0 auto; display:flex; flex-direction:column; gap:2rem; align-items:flex-start;" class="sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 style="font-size:clamp(1.375rem,3vw,2rem); font-weight:900; color:white; margin:0 0 0.5rem; letter-spacing:-0.015em;">Problem? Wir kommen.</h2>
+          <p style="font-size:1rem; color:rgba(255,255,255,0.8); margin:0;">Ruf uns an – wir sind Mo–Sa von 7–20 Uhr erreichbar.</p>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:1rem; flex-shrink:0;">
+          <a href="#" style="display:flex; align-items:center; gap:0.625rem; background:#1c1412; color:white; font-size:1rem; font-weight:800; padding:1rem 1.875rem; text-decoration:none; white-space:nowrap; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            0203 · 456 789
+          </a>
+          <a href="#" style="background:white; color:#d97706; font-size:0.9375rem; font-weight:700; padding:1rem 1.75rem; text-decoration:none; white-space:nowrap; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">Online anfragen</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Geeignet für -->
+    <section style="background:#faf7f2; padding:1.75rem 1.5rem; border-top:1px solid #e7e0d6;">
+      <div style="max-width:72rem; margin:0 auto;">
+        <p style="font-size:0.875rem; color:#a89f94; margin:0; line-height:1.6;">
+          <strong style="color:#1c1412; font-weight:600;">Geeignet für:</strong>
+          Sanitär- & Heizungsbetriebe, Elektriker, Maler, Maurer, Schreiner, Gartenbau, Gebäudereinigung – alle lokalen Handwerksbetriebe und Bauunternehmen.
+        </p>
+      </div>
+    </section>
+
+  </main>
 
   <DemoFooter />
 </div>
