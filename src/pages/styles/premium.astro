@@ -2,97 +2,159 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DemoHeader from '../../components/DemoHeader.astro';
 import DemoFooter from '../../components/DemoFooter.astro';
-import DemoCTA from '../../components/DemoCTA.astro';
 ---
 
 <BaseLayout title="Premium & Elegant – STH Design-Katalog">
-<div style="display:flex; flex-direction:column; min-height:100vh; font-family:Georgia,'Book Antiqua',Palatino,serif;">
+<div style="display:flex; flex-direction:column; min-height:100vh; background:#f7f4ef; color:#100e0b;">
+
   <DemoHeader showBack currentStyle="Premium & Elegant" />
 
-  <div style="flex:1; background:#fafaf9;">
-
-    <!-- Nav: Ultra-minimal -->
-    <nav style="background:#fafaf9; border-bottom:1px solid #e7e5e4; position:sticky; top:42px; z-index:40;">
-      <div style="max-width:72rem; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:68px;">
-        <div>
-          <span style="font-size:0.875rem; font-weight:400; color:#0c0a09; letter-spacing:0.22em; text-transform:uppercase; font-family:system-ui,sans-serif;">Maison Noble</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:2.5rem;" class="hidden md:flex">
-          {['Collection','Atelier','Heritage','Contact'].map(l => (
-            <a href="#" style="font-size:0.75rem; font-weight:400; color:#a8a29e; text-decoration:none; letter-spacing:0.14em; text-transform:uppercase; font-family:system-ui,sans-serif; transition:color 0.2s;" onmouseover="this.style.color='#0c0a09'" onmouseout="this.style.color='#a8a29e'">{l}</a>
-          ))}
-        </div>
-        <button style="background:none; border:none; cursor:pointer; color:#a8a29e;" class="md:hidden" aria-label="Menü">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
+  <!-- Nav: Ultra-minimal -->
+  <nav style="background:#f7f4ef; border-bottom:1px solid #e5dfd5; position:sticky; top:42px; z-index:40;">
+    <div style="max-width:80rem; margin:0 auto; padding:0 3rem; height:64px; display:flex; align-items:center; justify-content:space-between;">
+      <span style="font-family:Georgia,'Times New Roman',serif; font-size:0.9375rem; font-weight:400; color:#100e0b; letter-spacing:0.12em; text-transform:uppercase;">Merion Studio</span>
+      <div style="display:flex; gap:2.5rem;" class="hidden md:flex">
+        {['Leistungen','Philosophie','Projekte','Kontakt'].map(l => (
+          <a href="#" style="font-family:system-ui,sans-serif; font-size:0.75rem; color:#a08870; text-decoration:none; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.2s;" onmouseover="this.style.color='#100e0b'" onmouseout="this.style.color='#a08870'">{l}</a>
+        ))}
       </div>
-    </nav>
+      <button style="background:none; border:none; cursor:pointer; color:#a08870;" class="md:hidden" aria-label="Menü">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
 
-    <!-- Hero: Minimal, full height -->
-    <section style="min-height:90vh; display:flex; align-items:center; justify-content:center; padding:5rem 2rem; text-align:center; position:relative;">
-      <!-- Subtle background -->
-      <div style="position:absolute; inset:0; background:linear-gradient(160deg,#fafaf9 0%,#f0ece4 100%);" aria-hidden="true"></div>
+  <main style="flex:1;">
 
-      <div style="position:relative; max-width:48ch; margin:0 auto;">
-        <p style="font-size:0.6875rem; font-weight:400; color:#d4af37; letter-spacing:0.3em; text-transform:uppercase; margin:0 0 3rem; font-family:system-ui,sans-serif;">Haute Couture · Paris · Berlin · 1924</p>
-        <h1 style="font-size:clamp(2.5rem,6vw,4.5rem); font-weight:300; color:#0c0a09; line-height:1.15; letter-spacing:-0.01em; margin:0 0 2.5rem;">
-          Die Kunst der<br />feinen Details.
-        </h1>
-        <!-- Gold divider -->
-        <div style="display:flex; align-items:center; gap:1rem; justify-content:center; margin-bottom:2.5rem;">
-          <div style="flex:1; max-width:4rem; height:1px; background:#d4af37;"></div>
-          <div style="width:4px; height:4px; background:#d4af37; transform:rotate(45deg);"></div>
-          <div style="flex:1; max-width:4rem; height:1px; background:#d4af37;"></div>
+    <!-- Hero: Split dunkel / hell -->
+    <section style="display:grid; grid-template-columns:1fr; min-height:88vh;" class="lg:grid-cols-[1fr_2fr]">
+
+      <!-- Linke dunkle Fläche (nur Desktop) -->
+      <div style="background:#100e0b; display:flex; flex-direction:column; justify-content:flex-end; padding:3rem;" class="hidden lg:flex">
+        <div style="margin-bottom:3rem;">
+          <div style="width:2.5rem; height:1px; background:#c9a84c; margin-bottom:0.5rem;"></div>
+          <div style="width:1.25rem; height:1px; background:rgba(201,168,76,0.35);"></div>
         </div>
-        <p style="font-size:1.0625rem; color:#78716c; line-height:1.9; margin:0 0 3rem;">
-          Seit einem Jahrhundert entstehen in unserem Atelier Stücke, die Zeit überdauern – handgefertigt mit höchster Präzision und ausgesuchtesten Materialien.
-        </p>
-        <a href="#" style="display:inline-block; font-size:0.75rem; font-weight:400; color:#0c0a09; letter-spacing:0.24em; text-transform:uppercase; text-decoration:none; border-bottom:1px solid #d4af37; padding-bottom:0.375rem; font-family:system-ui,sans-serif; transition:color 0.2s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#0c0a09'">Die Collection entdecken</a>
+        <p style="font-family:system-ui,sans-serif; font-size:0.6875rem; font-weight:400; color:rgba(255,255,255,0.25); letter-spacing:0.18em; text-transform:uppercase; writing-mode:vertical-rl; transform:rotate(180deg);">Premium Consulting · seit 2009</p>
+      </div>
+
+      <!-- Rechte helle Fläche -->
+      <div style="display:flex; align-items:center; padding:6rem 3rem 5rem;">
+        <div style="max-width:56ch;">
+          <p style="font-family:system-ui,sans-serif; font-size:0.6875rem; color:#c9a84c; letter-spacing:0.28em; text-transform:uppercase; margin:0 0 3rem;">Exzellenz. Diskretion. Ergebnis.</p>
+          <h1 style="font-family:Georgia,'Times New Roman',serif; font-size:clamp(2.25rem,4.5vw,3.75rem); font-weight:300; color:#100e0b; line-height:1.2; letter-spacing:-0.01em; margin:0 0 2.5rem;">
+            Beratung,<br />die den<br />Unterschied macht.
+          </h1>
+          <!-- Gold-Ornament -->
+          <div style="display:flex; align-items:center; gap:0.875rem; margin-bottom:2.5rem;">
+            <div style="width:3rem; height:1px; background:#c9a84c;"></div>
+            <div style="width:0.375rem; height:0.375rem; background:#c9a84c; transform:rotate(45deg); flex-shrink:0;"></div>
+            <div style="width:1.5rem; height:1px; background:rgba(201,168,76,0.4);"></div>
+          </div>
+          <p style="font-family:system-ui,sans-serif; font-size:1rem; color:#a08870; line-height:1.9; margin:0 0 3rem; max-width:42ch;">
+            Merion Studio begleitet Unternehmen und Privatpersonen bei komplexen Entscheidungen – vertraulich, präzise und mit messbaren Ergebnissen.
+          </p>
+          <a href="#" style="font-family:system-ui,sans-serif; font-size:0.75rem; color:#100e0b; text-decoration:none; letter-spacing:0.16em; text-transform:uppercase; border-bottom:1px solid #c9a84c; padding-bottom:0.3125rem; display:inline-block; transition:color 0.2s;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='#100e0b'">Erste Beratung anfragen</a>
+        </div>
       </div>
     </section>
 
-    <!-- Features: Minimalist rows -->
-    <section style="background:white; padding:6rem 2rem;">
-      <div style="max-width:56rem; margin:0 auto;">
-        <p style="font-size:0.6875rem; font-weight:400; color:#a8a29e; letter-spacing:0.24em; text-transform:uppercase; margin:0 0 4rem; text-align:center; font-family:system-ui,sans-serif;">Notre Savoir-Faire</p>
-        <div style="display:flex; flex-direction:column; gap:0;">
-          {[
-            { nr:'I',  title:'Handwerkskunst',   text:'Jedes Stück wird von Meisterschneidern in reiner Handarbeit gefertigt – kein Stich ohne Bewusstsein.' },
-            { nr:'II', title:'Materialkunde',     text:'Wir beziehen Stoffe ausschließlich von Manufakturen, die Tradition und Nachhaltigkeit vereinen.' },
-            { nr:'III', title:'Maßanfertigung',  text:'Jedes Stück wird nach Ihren Maßen und Vorstellungen individuell geschaffen.' },
-          ].map((f,i) => (
-            <div style={`display:grid; grid-template-columns:3rem 1fr; gap:2rem; align-items:start; padding:2.5rem 0; ${i>0?'border-top:1px solid #e7e5e4;':''}`}>
-              <span style="font-size:0.75rem; font-weight:400; color:#d4af37; letter-spacing:0.1em; padding-top:0.25rem; font-family:system-ui,sans-serif;">{f.nr}</span>
-              <div>
-                <h3 style="font-size:1rem; font-weight:400; color:#0c0a09; margin:0 0 0.75rem; letter-spacing:0.04em;">{f.title}</h3>
-                <p style="font-size:0.9375rem; color:#78716c; line-height:1.8; margin:0;">{f.text}</p>
+    <!-- Leistungen: Elegante Zeilen -->
+    <section style="background:white; padding:7rem 3rem;">
+      <div style="max-width:80rem; margin:0 auto;">
+        <div style="display:grid; grid-template-columns:1fr; gap:5rem; align-items:start;" class="lg:grid-cols-[1fr_2fr]">
+
+          <div style="padding-top:0.25rem;">
+            <p style="font-family:system-ui,sans-serif; font-size:0.6875rem; color:#c9a84c; letter-spacing:0.28em; text-transform:uppercase; margin:0 0 1.5rem;">Leistungen</p>
+            <h2 style="font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.5rem,2.5vw,2rem); font-weight:300; color:#100e0b; line-height:1.35; margin:0;">Was wir<br />für Sie tun.</h2>
+          </div>
+
+          <div>
+            {[
+              { nr:'I',   titel:'Strategieberatung',        text:'Zielorientierte Analyse Ihrer Ausgangssituation. Klare Handlungsempfehlungen. Umsetzung auf Wunsch.' },
+              { nr:'II',  titel:'Vermögensstrukturierung',  text:'Individuelle Konzepte zur nachhaltigen Sicherung und Entwicklung privater und unternehmerischer Vermögen.' },
+              { nr:'III', titel:'Nachfolgeplanung',         text:'Strukturierte Vorbereitung unternehmerischer Übergaben – diskret, rechtssicher und zukunftsorientiert.' },
+              { nr:'IV',  titel:'Projektsteuerung',         text:'Begleitung komplexer Vorhaben von der Konzeptphase bis zur erfolgreichen Umsetzung – ohne Kompromisse.' },
+            ].map((l, i) => (
+              <div style={`display:grid; grid-template-columns:2.5rem 1fr; gap:2rem; padding:2.25rem 0; ${i > 0 ? 'border-top:1px solid #e5dfd5;' : ''}`}>
+                <span style="font-family:Georgia,serif; font-size:0.75rem; color:#c9a84c; letter-spacing:0.08em; padding-top:0.2rem;">{l.nr}</span>
+                <div>
+                  <h3 style="font-family:Georgia,'Times New Roman',serif; font-size:1.0625rem; font-weight:400; color:#100e0b; margin:0 0 0.625rem; letter-spacing:0.01em;">{l.titel}</h3>
+                  <p style="font-family:system-ui,sans-serif; font-size:0.9375rem; color:#a08870; line-height:1.8; margin:0;">{l.text}</p>
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qualitätsversprechen: Dunkle Sektion -->
+    <section style="background:#100e0b; padding:7rem 3rem;">
+      <div style="max-width:80rem; margin:0 auto;">
+        <div style="display:flex; align-items:center; gap:0.875rem; margin-bottom:5rem;">
+          <div style="width:2.5rem; height:1px; background:#c9a84c;"></div>
+          <div style="width:0.3125rem; height:0.3125rem; background:#c9a84c; transform:rotate(45deg); flex-shrink:0;"></div>
+          <div style="width:1.25rem; height:1px; background:rgba(201,168,76,0.35);"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr; gap:3.5rem;" class="lg:grid-cols-3">
+          {[
+            {
+              nr:'01',
+              titel:'Absolute Vertraulichkeit',
+              text:'Alle Mandate werden streng vertraulich behandelt. Wir unterzeichnen auf Wunsch Geheimhaltungsvereinbarungen vor dem ersten Gespräch.',
+            },
+            {
+              nr:'02',
+              titel:'Keine Interessenkonflikte',
+              text:'Wir sind vollständig unabhängig. Keine Provisionen, keine verdeckten Vergütungen. Unsere einzige Verpflichtung gilt Ihnen.',
+            },
+            {
+              nr:'03',
+              titel:'Messbare Ergebnisse',
+              text:'Wir definieren zu Beginn jedes Mandats klare Ziele – und messen unsere Arbeit konsequent daran. Keine Absichtserklärungen.',
+            },
+          ].map(q => (
+            <div style="border-top:1px solid rgba(201,168,76,0.2); padding-top:2rem;">
+              <p style="font-family:system-ui,sans-serif; font-size:0.6875rem; color:rgba(201,168,76,0.45); letter-spacing:0.16em; margin:0 0 1.5rem;">{q.nr}</p>
+              <h3 style="font-family:Georgia,'Times New Roman',serif; font-size:1.0625rem; font-weight:400; color:rgba(255,255,255,0.88); margin:0 0 1rem; line-height:1.35;">{q.titel}</h3>
+              <p style="font-family:system-ui,sans-serif; font-size:0.9375rem; color:rgba(255,255,255,0.35); line-height:1.8; margin:0;">{q.text}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- CTA: Sehr minimal -->
-    <section style="background:#0c0a09; padding:6rem 2rem; text-align:center;">
-      <div style="max-width:40rem; margin:0 auto;">
-        <div style="display:flex; align-items:center; gap:1rem; justify-content:center; margin-bottom:3rem;">
-          <div style="flex:1; max-width:3rem; height:1px; background:#d4af37; opacity:0.4;"></div>
-          <div style="width:3px; height:3px; background:#d4af37; transform:rotate(45deg);"></div>
-          <div style="flex:1; max-width:3rem; height:1px; background:#d4af37; opacity:0.4;"></div>
+    <!-- CTA: Dezent, kein Button -->
+    <section style="background:#f7f4ef; padding:7rem 3rem; border-top:1px solid #e5dfd5;">
+      <div style="max-width:80rem; margin:0 auto; display:grid; grid-template-columns:1fr; gap:4rem; align-items:end;" class="lg:grid-cols-[3fr_2fr]">
+        <div>
+          <p style="font-family:system-ui,sans-serif; font-size:0.6875rem; color:#c9a84c; letter-spacing:0.28em; text-transform:uppercase; margin:0 0 2rem;">Kontakt</p>
+          <h2 style="font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.75rem,3.5vw,2.75rem); font-weight:300; color:#100e0b; margin:0 0 1.5rem; line-height:1.25; letter-spacing:-0.01em;">
+            Ein erstes Gespräch<br />ist immer kostenfrei.
+          </h2>
+          <p style="font-family:system-ui,sans-serif; font-size:1rem; color:#a08870; line-height:1.9; margin:0; max-width:46ch;">
+            Persönliche Beratungstermine nach Vereinbarung – in unseren Büros oder bei Ihnen. Wir kommen, wenn das Mandat es erfordert.
+          </p>
         </div>
-        <h2 style="font-size:clamp(1.5rem,3vw,2.25rem); font-weight:300; color:white; margin:0 0 1.25rem; letter-spacing:-0.01em;">Eine Kreation in Auftrag geben.</h2>
-        <p style="color:rgba(255,255,255,0.45); font-size:0.9375rem; line-height:1.8; margin:0 0 2.5rem; font-family:system-ui,sans-serif;">Persönliche Beratungstermine nach Vereinbarung. Diskret, individuell, zeitlos.</p>
-        <a href="#" style="display:inline-block; font-size:0.75rem; font-weight:400; color:#d4af37; letter-spacing:0.24em; text-transform:uppercase; text-decoration:none; border:1px solid rgba(212,175,55,0.4); padding:1rem 2.5rem; font-family:system-ui,sans-serif; transition:border-color 0.3s,color 0.3s;" onmouseover="this.style.borderColor='#d4af37';this.style.color='white'" onmouseout="this.style.borderColor='rgba(212,175,55,0.4)';this.style.color='#d4af37'">Termin anfragen</a>
+        <div style="display:flex; flex-direction:column; gap:1.5rem; align-items:flex-start;" class="lg:items-end">
+          <a href="#" style="font-family:system-ui,sans-serif; font-size:0.75rem; color:#100e0b; text-decoration:none; letter-spacing:0.16em; text-transform:uppercase; border-bottom:1px solid #c9a84c; padding-bottom:0.3125rem; display:inline-block; transition:color 0.2s;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='#100e0b'">Gespräch anfragen</a>
+          <p style="font-family:Georgia,serif; font-size:0.9375rem; color:#a08870; margin:0; font-style:italic;">beratung@merion-studio.de</p>
+        </div>
       </div>
     </section>
 
-    <div style="background:#fafaf9; padding:1.25rem 2rem; border-top:1px solid #e7e5e4;">
-      <div style="max-width:72rem; margin:0 auto;">
-        <p style="font-size:0.8125rem; color:#a8a29e; margin:0; font-family:system-ui,sans-serif;"><strong style="color:#0c0a09;">Geeignet für:</strong> Luxushotels, Schmuckgeschäfte, Modeateliers, High-End-Restaurants, Premium-Marken, Galerien.</p>
+    <!-- Geeignet für -->
+    <section style="padding:1.75rem 3rem; background:#f0ece5; border-top:1px solid #e5dfd5;">
+      <div style="max-width:80rem; margin:0 auto;">
+        <p style="font-family:system-ui,sans-serif; font-size:0.875rem; color:#a08870; margin:0; line-height:1.6;">
+          <strong style="color:#100e0b; font-weight:600;">Geeignet für:</strong>
+          Unternehmensberater, Vermögensverwalter, Luxusimmobilien, Premium-Beauty, Hotellerie, Privatbanken, Anwaltskanzleien und hochwertige Dienstleister jeder Art.
+        </p>
       </div>
-    </div>
-  </div>
+    </section>
+
+  </main>
 
   <DemoFooter />
 </div>
