@@ -60,10 +60,10 @@ import DemoFooter from '../../components/DemoFooter.astro';
     <section style="background:white; border-bottom:1px solid #dde4ed;">
       <div style="max-width:72rem; margin:0 auto; padding:0 2rem; display:grid; grid-template-columns:repeat(2,1fr); gap:0;" class="sm:grid-cols-4">
         {[
-          { zahl:'25+',  label:'Jahre Erfahrung' },
-          { zahl:'400+', label:'Projekte abgeschlossen' },
-          { zahl:'94 %', label:'Folgeaufträge' },
-          { zahl:'3',    label:'Standorte in NRW' },
+          { zahl:'~15',  label:'Jahre Erfahrung (Beispiel)' },
+          { zahl:'B2B',  label:'Schwerpunkt Beratung' },
+          { zahl:'NRW',  label:'Regionale Verwurzelung' },
+          { zahl:'KMU',  label:'Mittelstand & Inhabergeführt' },
         ].map((k, i) => (
           <div style={`padding:1.75rem 2rem; text-align:center; ${i < 3 ? 'border-right:1px solid #f0f4f8;' : ''}`}>
             <p style="font-size:1.875rem; font-weight:700; color:#1e3a5f; margin:0 0 0.25rem; letter-spacing:-0.02em;">{k.zahl}</p>
